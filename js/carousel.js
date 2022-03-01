@@ -8,21 +8,24 @@ const interval = 6000;
 
 const slideWidth = slides[0].getBoundingClientRect().width;
 
-let index = 1;
+let index = 0;
 let slideId;
 
-console.log(slides);
+//console.log(slides);
 
 const startSlide = () => {
     slideId = setInterval(() => {
-        const currentSlide = track.querySelector('.current-slide');
-        const nextSlide = currentSlide.nextElementSibling;
-        const currentDot = dotsNav.querySelector('.current-slide');
-        const nextDot = currentDot.nextElementSibling;
-        const nextIndex = slides.findIndex(slide => slide === nextSlide);
-        moveToSlide(track, currentSlide, nextSlide);
-        updateDots(currentDot, nextDot);
-        hideShowArrows(slides, prevButton, nextButton, nextIndex);
+            const currentSlide = track.querySelector('.current-slide');
+            const nextSlide = currentSlide.nextElementSibling;
+            //const prevSlide = currentSlide.previousElementSibling;
+            const currentDot = dotsNav.querySelector('.current-slide');
+            const nextDot = currentDot.nextElementSibling;
+            const nextIndex = slides.findIndex(slide => slide === nextSlide);
+            //const prevIndex = slides.findIndex(slide => slide === prevSlide);
+            moveToSlide(track, currentSlide, nextSlide);
+            updateDots(currentDot, nextDot);
+            hideShowArrows(slides, prevButton, nextButton, nextIndex);
+            currentImage++;
     }, interval);
   };
 
@@ -71,6 +74,7 @@ prevButton.addEventListener('click', e => {
     const prevDot = currentDot.previousElementSibling;
     const prevIndex = slides.findIndex(slide => slide === prevSlide);
 
+    clearInterval(slideId);
     moveToSlide(track, currentSlide, prevSlide);
     updateDots(currentDot, prevDot);
     hideShowArrows(slides, prevButton, nextButton, prevIndex);
@@ -84,6 +88,7 @@ nextButton.addEventListener('click', e => {
     const nextDot = currentDot.nextElementSibling;
     const nextIndex = slides.findIndex(slide => slide === nextSlide);
 
+    clearInterval(slideId);
     moveToSlide(track, currentSlide, nextSlide);
     updateDots(currentDot, nextDot);
     hideShowArrows(slides, prevButton, nextButton, nextIndex);
@@ -102,10 +107,16 @@ dotsNav.addEventListener('click', e => {
     const targetIndex = dots.findIndex(dot => dot === targetDot);
     const targetSlide = slides[targetIndex];
 
+    clearInterval(slideId);
     moveToSlide(track, currentSlide, targetSlide);
     updateDots(currentDot, targetDot);
     hideShowArrows(slides, prevButton, nextButton, targetIndex);
 })
+track.addEventListener('mouseenter', () => {
+    clearInterval(slideId);
+  });
+  
+track.addEventListener('mouseleave', startSlide);
 
 startSlide();
 
