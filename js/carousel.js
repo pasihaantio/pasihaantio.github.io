@@ -15,7 +15,7 @@ let slideId;
 
 const startSlide = () => {
     slideId = setInterval(() => {
-            const currentSlide = track.querySelector('.current-slide');
+            /*const currentSlide = track.querySelector('.current-slide');
             const nextSlide = currentSlide.nextElementSibling;
             //const prevSlide = currentSlide.previousElementSibling;
             const currentDot = dotsNav.querySelector('.current-slide');
@@ -25,7 +25,7 @@ const startSlide = () => {
             moveToSlide(track, currentSlide, nextSlide);
             updateDots(currentDot, nextDot);
             hideShowArrows(slides, prevButton, nextButton, nextIndex);
-            currentImage++;
+            currentImage++;*/
     }, interval);
   };
 

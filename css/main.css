@@ -17,7 +17,7 @@ body {
   background: rgb(197, 158, 158); 
   width: 100%;
   max-width: 1180px;
-  padding: 0 10px;
+  /*padding: 0 10px;*/
   margin: 0 auto;
 }
 .wrapper img {
@@ -235,7 +235,7 @@ footer li{
   margin: 10px 0;
 }
 
-footer a{
+footer a {
   color: #eee;
   text-decoration: none;
 }
@@ -336,23 +336,25 @@ footer a{
 */
 /* MEDIA QUERIES */
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 825px) {
 
   header nav {
+    position: relative;
+    background:rgb(146, 111, 111); 
+    right: 10px;
     float: none;
     clear: left;
     width: 100%;
   }
   header nav ul {
     margin: 0;
-    padding: 0;
+    padding: 13px 0px 54px 0px;
   }
   h1.logo {
     margin: 10px auto 0;
     float: none;
   }
   header nav ul li {
-    margin: 10px 0;
     width: 20%;
     padding: 0;
     text-align: center;
@@ -364,6 +366,23 @@ footer a{
     width: 48%;
     text-align: center;
   }
+  .carousel__button--left {
+    left: 50px;
+  }
+  .carousel__button--right {
+    right: 50px;
+  }
+  .slide__content {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+  }
+  .game-video {
+    width: 200%;
+    height: 400px;
+    border-radius: 1em;
+  }
 }
 @media screen and (max-width: 480px) {
 
@@ -372,16 +391,20 @@ footer a{
     height: 40px;
     width: 100%;
     background: url(../images/menu.svg) no-repeat 98% center;
-    background-color: #404040;
+    background-color: #9a7575;
     cursor: pointer;
   }
   header .wrapper {
     width: 100%;
     padding: 0;
   }
+  header nav {
+    right: 0;
+  }
   header nav ul {
     overflow: hidden;
     background: #505050;
+    padding: 0;
     height: 0;
   }
   header nav ul.open {
@@ -419,6 +442,23 @@ footer a{
     position: relative;
     width: 180%;
     left: -40%;
+  }
+  .carousel__button--left {
+    left: 15px;
+  }
+  .carousel__button--right {
+    right: 15px;
+  }
+  .slide__content {
+    position: absolute;
+    top: 50%;
+    left: 15%;
+    transform: translateY(-50%);
+  }
+  .game-video {
+    width: 100%;
+    height: 400px;
+    border-radius: 1em;
   }
 }
 
